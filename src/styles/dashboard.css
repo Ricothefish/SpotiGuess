@@ -1,0 +1,31 @@
+.menu-depart{
+    text-align: center;
+}
+
+
+.btn-commencer{
+    margin-top: 20%;
+    
+}
+
+
+
+.dashboard-jeu{
+   margin-top: 10%;
+   text-align: center;
+   display: block;
+}
+
+.btn-suivant{
+    width: 300px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.btn-reponse{
+    width: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}

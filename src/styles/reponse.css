@@ -1,0 +1,12 @@
+.reponse{
+    margin-top: 15px;
+    width: 600px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid white 3px;
+}
+
+.cover{
+    width: 200px;
+}

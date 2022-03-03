@@ -1,0 +1,24 @@
+
+
+.login{
+    text-align: center;
+}
+
+.titre-login{
+    
+    justify-content: center;
+    
+    font-size: 3rem;
+    color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15%;
+
+    
+}
+
+
+.btn-login{
+
+    margin-top: 30px;
+}

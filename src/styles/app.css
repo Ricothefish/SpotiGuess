@@ -1,0 +1,26 @@
+*{
+    background: black;
+    color: white;
+}
+
+button{
+    background-color: #1ed760;
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    text-align: center;
+
+    font-size: 1.9rem;
+    font-weight: bold;
+    
+
+    width: 400px;
+    height: 70px;
+}
+
+
+button:hover{
+    transform: scale(1.04);
+
+    color: black;
+}
