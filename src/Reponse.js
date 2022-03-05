@@ -8,6 +8,8 @@ function Reponse({currentSong}){
     console.log('artiste',currentSong.track.artists[0].name)
     console.log('album',currentSong.track.album.name)
 
+    
+
 return(<div className="reponse">
     
     <h2>Réponse:</h2>
