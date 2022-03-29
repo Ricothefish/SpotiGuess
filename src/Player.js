@@ -5,7 +5,8 @@ function Player({accessToken , trackUri}){
     return <div style={{ display: "none" }}><SpotifyPlayer
     token={accessToken}
     uris = {trackUri} 
-    autoPlay = {true}/>
+    autoPlay = {true}
+    name="Blindtest Spotify"/>
     </div>
 }
 
