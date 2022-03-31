@@ -141,7 +141,7 @@ function Dashboard({ code }) {
     useEffect(() => {
         setCurrentSong(randomSongArray[compteur])
 
-    }, [randomSongArray])
+    }, [randomSongArray, compteur])
 
     //const [randomSongArray, setRandomSongArray] = useState()
     //console.log('selected',selectedArtist.selectedArtistId)
