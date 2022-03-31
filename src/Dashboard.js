@@ -126,6 +126,8 @@ function Dashboard({ code }) {
 
 
     useEffect(()=>{
+
+        if(accessToken){
         spotifyApi.transferMyPlayback("SpotiGuess")
     .then(()=> {
       console.log('Transfering playback to SpotiGuess');
@@ -133,8 +135,9 @@ function Dashboard({ code }) {
     .catch((err)=>{
     console.log('Something went wrong!', err);
     }) 
-    },[selectedMode])
-    
+}
+    },[accessToken])
+
     useEffect(() => {
         setCurrentSong(randomSongArray[compteur])
 
