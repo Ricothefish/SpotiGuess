@@ -22,3 +22,10 @@
 
     margin-top: 30px;
 }
+
+@media screen and (max-width: 400px) {
+    .btn-login{
+        font-size: 2.8rem;
+        width: 100%;
+    }
+}
