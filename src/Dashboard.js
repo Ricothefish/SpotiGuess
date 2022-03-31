@@ -92,7 +92,7 @@ function Dashboard({ code }) {
         if (!accessToken) return
         spotifyApi.setAccessToken(accessToken)
 
-        
+
 
     }, [accessToken])
 
@@ -125,18 +125,18 @@ function Dashboard({ code }) {
     }, [gameStart, randomSongArray])
 
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        if(accessToken){
-        spotifyApi.transferMyPlayback("SpotiGuess")
-    .then(()=> {
-      console.log('Transfering playback to SpotiGuess');
-    })
-    .catch((err)=>{
-    console.log('Something went wrong!', err);
-    }) 
-}
-    },[accessToken])
+        if (accessToken) {
+            spotifyApi.transferMyPlayback(["SpotiGuess"])
+                .then(() => {
+                    console.log('Transfering playback to SpotiGuess');
+                })
+                .catch((err) => {
+                    console.log('Something went wrong!', err);
+                })
+        }
+    }, [accessToken])
 
     useEffect(() => {
         setCurrentSong(randomSongArray[compteur])
