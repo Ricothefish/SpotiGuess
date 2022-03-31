@@ -92,6 +92,14 @@ function Dashboard({ code }) {
         if (!accessToken) return
         spotifyApi.setAccessToken(accessToken)
 
+        spotifyApi.transferMyPlayback("SpotiGuess")
+    .then(()=> {
+      console.log('Transfering playback to SpotiGuess');
+    })
+    .catch((err)=>{
+    console.log('Something went wrong!', err);
+    }) 
+
     }, [accessToken])
 
     useEffect(() => {
@@ -183,6 +191,7 @@ function Dashboard({ code }) {
                     setCurrentSong()
                     setRandomSongArray([])
                     setCompteur(0)
+                    setShowReponse(false)
                 }
                 }>
                     <button className="btn-retour">Retour</button></a>
