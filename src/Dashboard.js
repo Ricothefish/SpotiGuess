@@ -100,7 +100,7 @@ function Dashboard({ code }) {
         if (selectedMode !== "liked") {
 
             console.log('useeffect')
-            setRandomSongArray(randomSongArray.sort(() => Math.random() - 0.5))
+            //setRandomSongArray(randomSongArray.sort(() => Math.random() - 0.5))
             var explicitCounter = 0
             var arr = randomSongArray
             const total = randomSongArray.length
@@ -222,8 +222,7 @@ function Dashboard({ code }) {
                         <a onClick={() => (setSelectedMode('playlist'))}><button className="btn-playlist">Playlist</button></a>
                         <a onClick={() => (setSelectedMode('artist'))}><button className="btn-artist">Artiste</button></a>
                     </div>
-                    <a onClick={() => (code="")}>
-                        <button className="btn-retour">Déconnexion</button></a>
+                    
                 </div>
             </Container>
         )

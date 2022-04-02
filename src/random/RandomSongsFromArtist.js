@@ -41,7 +41,7 @@ function RandomSongsFromArtist(accessToken, artistId, randomSongArray, setRandom
         })
         .then((data) => {
             var a=[]
-
+            console.log('data albums',data.body.albums)
             
             data.body.albums.map((album) => {
 
