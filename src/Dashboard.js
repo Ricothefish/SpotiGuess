@@ -100,7 +100,7 @@ function Dashboard({ code }) {
         if (selectedMode !== "liked") {
 
             console.log('useeffect')
-            //setRandomSongArray(randomSongArray.sort(() => Math.random() - 0.5))
+            setRandomSongArray(randomSongArray.sort(() => Math.random() - 0.5))
             var explicitCounter = 0
             var arr = randomSongArray
             const total = randomSongArray.length
@@ -109,6 +109,8 @@ function Dashboard({ code }) {
                     explicitCounter++
                 }
             })
+
+
             console.log('division', explicitCounter / total)
             if (explicitCounter / total > 0.1 && arr.length !== explicitCounter) {
                 console.log('10%')
@@ -117,6 +119,24 @@ function Dashboard({ code }) {
                 arr = arr.filter(track => track.explicit)
             }
 
+/*
+            arr.map((track)=>{
+
+                if(arr.some(t=> t.name === track.name && t.explicit && track.explicit === false)){
+
+                    console.log("élément a supprimer", track.name + track.explicit)
+                }
+                
+            })
+
+           
+            for (var i = 0; i < arr.length; i++) {
+                if (arr.some(t=> t.name === arr[i].name && t.explicit && arr[i].explicit === false)){
+                    console.log("élément a supprimer", arr[i].name + arr[i].explicit)
+                    arr.splice(i,1)
+                }
+            }
+*/
             setRandomSongArray(arr)
 
 
