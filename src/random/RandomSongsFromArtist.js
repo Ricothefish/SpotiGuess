@@ -41,7 +41,11 @@ function RandomSongsFromArtist(accessToken, artistId, randomSongArray, setRandom
         })
         .then((data) => {
             var a=[]
+
+            
             data.body.albums.map((album) => {
+
+
                 album.tracks.items.map((track) => {
                     //if (track.explicit) {
                         a.push(track)
