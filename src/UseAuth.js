@@ -5,7 +5,7 @@ import axios from "axios"
 const urlServerLocal = 'http://localhost:3001'
 const urlServerOnline= 'https://blindtest-spotify-v1.herokuapp.com'
 
-const urlServer= urlServerLocal;
+const urlServer= urlServerOnline;
 
 function UseAuth(code) {
     const [accessToken, setAccessToken] = useState()
