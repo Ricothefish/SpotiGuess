@@ -222,7 +222,7 @@ function Dashboard({ code }) {
                         <a onClick={() => (setSelectedMode('playlist'))}><button className="btn-playlist">Playlist</button></a>
                         <a onClick={() => (setSelectedMode('artist'))}><button className="btn-artist">Artiste</button></a>
                     </div>
-                    <a onClick={() => (window.location.reload(false))}>
+                    <a onClick={() => (code="")}>
                         <button className="btn-retour">Déconnexion</button></a>
                 </div>
             </Container>
