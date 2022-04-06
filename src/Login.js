@@ -4,7 +4,7 @@ import './styles/login.css'
 
 
 const urlClientLocal = 'http://localhost:3000/'
-const urlClientOnline= 'https://blindtest-spotify.netlify.app'
+const urlClientOnline= 'https://spotiguess.com'
 
 const urlClient = urlClientOnline
 
