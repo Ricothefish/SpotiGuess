@@ -53,17 +53,7 @@ function Dashboard({ code }) {
 
         //setCurrentSong(randomSongArray[0])
         setGameStart(true)
-        //:setRandomSongArray(arr)
 
-        //console.log('premierson', arr[0])
-
-        //setCompteur(compteur + 1)
-        //const currentSongBis = arr[0]
-
-        //console.log('Clickarray', arr)
-        //console.log('ClickarrayLength', arr.length)
-        //console.log('Clickcompteur', compteur)
-        //console.log('ClickcurrentSong', currentSongBis)
 
     }
 
