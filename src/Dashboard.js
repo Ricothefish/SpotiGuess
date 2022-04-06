@@ -27,6 +27,7 @@ function Dashboard({ code }) {
     const [currentSong, setCurrentSong] = useState()
     const [showReponse, setShowReponse] = useState(false)
     const [randomSongArray, setRandomSongArray] = useState([])
+    const [filteredRandomSongArray, setFilteredRandomSongArray] = useState([])
     const [gameStart, setGameStart] = useState(false)
     const [selectedMode, setSelectedMode] = useState()
     const [selectedArtist, setSelectedArtist] = useState()
@@ -69,7 +70,7 @@ function Dashboard({ code }) {
 
 
     function handleClickNext() {
-        if (compteur === randomSongArray.length) {
+        if (compteur === filteredRandomSongArray.length) {
 
             alert('fin du jeu')
         }
@@ -78,7 +79,7 @@ function Dashboard({ code }) {
             console.log('handleClick')
             setCompteur(compteur + 1)
             setShowReponse(false)
-            setCurrentSong(randomSongArray[compteur])
+            setCurrentSong(filteredRandomSongArray[compteur])
 
         }
     }
@@ -99,50 +100,42 @@ function Dashboard({ code }) {
     useEffect(() => {
         if (selectedMode !== "liked") {
 
-            console.log('useeffect')
-            setRandomSongArray(randomSongArray.sort(() => Math.random() - 0.5))
-            var explicitCounter = 0
-            var arr = randomSongArray
-            const total = randomSongArray.length
-            arr.map((track) => {
-                if (track.explicit) {
-                    explicitCounter++
-                }
-            })
+
+            var arr = randomSongArray.sort(() => Math.random() - 0.5)
 
 
-            console.log('division', explicitCounter / total)
-            if (explicitCounter / total > 0.1 && arr.length !== explicitCounter) {
-                console.log('10%')
-                console.log('arr.length', arr.length)
-                console.log('explicitCounter', explicitCounter)
-                arr = arr.filter(track => track.explicit)
-            }
+            var arrExplicit = arr.filter(t => t.explicit)
+            var arrNotExplicit = arr.filter(t => !t.explicit)
 
-/*
-            arr.map((track)=>{
+            arrExplicit = arrExplicit.filter((obj, index, self) =>
+                index === self.findIndex((el) => (
+                    el['name'] === obj['name']
+                ))
+            )
+            arrNotExplicit = arrNotExplicit.filter((obj, index, self) =>
+                index === self.findIndex((el) => (
+                    el['name'] === obj['name']
+                ))
+            )
 
-                if(arr.some(t=> t.name === track.name && t.explicit && track.explicit === false)){
+            for (let i = 0; i < arrNotExplicit.length; i++) {
+                if (arrExplicit.some(s => s.name === arrNotExplicit[i].name) === false ){
 
-                    console.log("élément a supprimer", track.name + track.explicit)
-                }
-                
-            })
-
-           
-            for (var i = 0; i < arr.length; i++) {
-                if (arr.some(t=> t.name === arr[i].name && t.explicit && arr[i].explicit === false)){
-                    console.log("élément a supprimer", arr[i].name + arr[i].explicit)
-                    arr.splice(i,1)
+                    arrExplicit.push(arrNotExplicit[i])
                 }
             }
-*/
-            setRandomSongArray(arr)
+
+            arr = arrExplicit
+            arr = arr.sort(() => Math.random() - 0.5)
+            
+            
+        setFilteredRandomSongArray(arr)
 
 
-            setCurrentSong(randomSongArray[compteur])
-        }
-    }, [gameStart, randomSongArray])
+        setCurrentSong(filteredRandomSongArray[compteur])
+
+    }
+}, [gameStart, randomSongArray])
 
 
     useEffect(() => {
@@ -159,9 +152,9 @@ function Dashboard({ code }) {
     }, [accessToken])
 
     useEffect(() => {
-        setCurrentSong(randomSongArray[compteur])
+        setCurrentSong(filteredRandomSongArray[compteur])
 
-    }, [randomSongArray, compteur])
+    }, [filteredRandomSongArray, compteur])
 
     //const [randomSongArray, setRandomSongArray] = useState()
     //console.log('selected',selectedArtist.selectedArtistId)
@@ -180,7 +173,7 @@ function Dashboard({ code }) {
 
 
 
-    console.log('randomSongArray', randomSongArray)
+    console.log('filteredrandomSongArray', filteredRandomSongArray)
     console.log('compteur', compteur)
     console.log('currentSong', currentSong)
     if (selectedArtist) {
@@ -242,7 +235,7 @@ function Dashboard({ code }) {
                         <a onClick={() => (setSelectedMode('playlist'))}><button className="btn-playlist">Playlist</button></a>
                         <a onClick={() => (setSelectedMode('artist'))}><button className="btn-artist">Artiste</button></a>
                     </div>
-                    
+
                 </div>
             </Container>
         )
@@ -321,3 +314,7 @@ function Dashboard({ code }) {
 
 
 export default Dashboard
+
+
+
+
