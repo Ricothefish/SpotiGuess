@@ -185,11 +185,11 @@ function Dashboard({ code }) {
 
             <div className="dashboard-jeu">
 
-                <a className="btn-suivant" onClick={handleClickNext}>
-                    <button >Suivant</button></a>
+                <a  onClick={handleClickNext}>
+                    <button className="btn-suivant">Suivant</button></a>
 
-                <a  className="btn-reponse" onClick={handleClickReponse}>
-                    <button>Afficher la réponse</button></a>
+                <a   onClick={handleClickReponse}>
+                    <button className="btn-reponse">Afficher la réponse</button></a>
 
 
                 {showReponse ?
@@ -203,8 +203,8 @@ function Dashboard({ code }) {
                     setCompteur(0)
                     setShowReponse(false)
                 }
-                } className="btn-retour">
-                    <button >Retour</button></a>
+                } >
+                    <button className="btn-retour">Retour</button></a>
 
                 <Player
                     accessToken={accessToken}

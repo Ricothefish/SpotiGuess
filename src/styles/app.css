@@ -3,7 +3,7 @@
     color: white;
 }
 
-a{
+button{
     background-color: #1ed760;
     color: black;
     text-decoration: none;
@@ -24,7 +24,7 @@ a{
 }
 
 
-a:hover{
+button:hover{
     transform: scale(1.04);
 
     color: black;
