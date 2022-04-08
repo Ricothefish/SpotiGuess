@@ -125,21 +125,14 @@ function Dashboard({ code }) {
         setCurrentSong(filteredRandomSongArray[compteur])
 
     }
+
+    else{
+        setFilteredRandomSongArray(randomSongArray)
+        setCurrentSong(filteredRandomSongArray[compteur])
+    }
 }, [gameStart, randomSongArray])
 
 
-    useEffect(() => {
-
-        if (accessToken) {
-            spotifyApi.transferMyPlayback(["SpotiGuess"])
-                .then(() => {
-                    console.log('Transfering playback to SpotiGuess');
-                })
-                .catch((err) => {
-                    console.log('Something went wrong!', err);
-                })
-        }
-    }, [accessToken])
 
     useEffect(() => {
         setCurrentSong(filteredRandomSongArray[compteur])
