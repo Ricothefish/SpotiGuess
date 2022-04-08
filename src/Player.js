@@ -72,10 +72,10 @@ function Player({ accessToken, trackUri }) {
   </>
 
   )
-style={{ display: "none" }}
+
 */
 
-  return <div ><SpotifyPlayer
+  return <div style={{ display: "none" }}><SpotifyPlayer
   token={accessToken}
   uris = {trackUri} 
   autoPlay = {true}
