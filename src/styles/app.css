@@ -3,6 +3,14 @@
     color: white;
 }
 
+body { height: 100%; }
+
+a{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 button{
     background-color: #1ed760;
     color: black;

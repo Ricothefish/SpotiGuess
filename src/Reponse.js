@@ -17,7 +17,7 @@ function Reponse({ accessToken, trackId  }) {
     const [urlImage,setUrlImage] = useState()
 
 
-
+useEffect(()=>{
     spotifyApi.getTrack(trackId)
     .then(function (data) {
         console.log('getTrack', data.body);
@@ -30,15 +30,17 @@ function Reponse({ accessToken, trackId  }) {
     }, function (err) {
         console.log(err);
     });
+},[])
+    
 
  
  
     return(urlImage ? <div className="reponse">
         
-        <h2>Réponse:</h2>
-                <h3>Titre: {titre}</h3>
-                <h3>Album: {album}</h3>
-                <h3>Artiste: {artiste}</h3>
+        
+                <p className="title"> {titre}</p>
+                
+                <p className="artist">{artiste}</p>
                 
                 <img className="cover" src={urlImage}/>
     

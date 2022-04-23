@@ -22,67 +22,148 @@ function checkForPlayer() {
    this.player.connect();
  }
 }
-*/
+
 
 function Player({ accessToken, trackUri }) {
 
   spotifyApi.setAccessToken(accessToken)
-  /*
-      var player = new Spotify.Player({
-        name: 'Carly Rae Jepsen Player',
-        getOAuthToken: callback => {
-          // Run code to get a fresh access token
-      
-          callback('access token here');
-        },
+  const [deviceId, setDeviceId] = useState()
+  const [player, setPlayer] = useState(undefined);
+
+  useEffect(() => {
+
+    const script = document.createElement("script");
+    script.src = "https://sdk.scdn.co/spotify-player.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+    
+    window.onSpotifyWebPlaybackSDKReady = () => {
+
+      const player = new window.Spotify.Player({
+        name: 'Web Playback SDK',
+        getOAuthToken: cb => { cb(accessToken); },
         volume: 0.5
       });
-  
-  
-      spotifyApi.
-  
+
+      setPlayer(player);
+
+      player.addListener('ready', ({ device_id }) => {
+        console.log('Ready with Device ID', device_id);
+        setDeviceId(device_id)
+
+      });
+
+      player.addListener('not_ready', ({ device_id }) => {
+        console.log('Device ID has gone offline', device_id);
+      });
+
+
+      player.connect();
+
+
+    };
+  }, []);
+
+
+  useEffect(()=>{
+    spotifyApi.transferMyPlayback(
+       [deviceId]
+    )
+    .then(function () {
+      console.log('Transfering playback to ' + deviceId)
+      return
       
-        spotifyApi
-          .play({
-            uri: trackUri,
-            position_ms: 1000,
-          })
-          .then(
-            function () {
-              console.log("playing: ", trackUri);
-            },
-            function (err) {
-              //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
-              console.log("Something went wrong!", err);
-            }
-          );
+    })
+    .then(()=>{
+      return spotifyApi.play({
+        uri: trackUri
+
+      })
+      
+    })
+    .then(()=>{
+      console.log("playing: ", trackUri);
+    })
+    .catch((err)=>{
+      console.log('Something went wrong!', err);
+    })
       
 
 
-          spotifyApi.getMyDevices()
-          .then(function(data) {
-            console.log('Data', data.body);
-          }, function(err) {
-            console.error(err);
-          });
 
-  return (<>
+  },[deviceId])
 
-
-  </>
-
-  )
-
+  return (<></>)
 */
+function Player({ accessToken, trackUri }) {
 
-  return <div style={{ display: "none" }}><SpotifyPlayer
-  token={accessToken}
-  uris = {trackUri} 
-  autoPlay = {true}
-  name="SpotiGuess"/>
-  </div>
-  
+   return <div style={{ display: "none" }}><SpotifyPlayer
+   token={accessToken}
+   uris = {trackUri} 
+   autoPlay = {true}
+   name="SpotiGuess"/>
+   </div>
+   
+
 
 }
 
 export default Player
+
+
+
+
+
+
+
+
+
+
+/*
+     var player = new Spotify.Player({
+       name: 'Carly Rae Jepsen Player',
+       getOAuthToken: callback => {
+         // Run code to get a fresh access token
+     
+         callback('access token here');
+       },
+       volume: 0.5
+     });
+ 
+ 
+     spotifyApi.
+ 
+     
+       spotifyApi
+         .play({
+           uri: trackUri,
+           position_ms: 1000,
+         })
+         .then(
+           function () {
+             console.log("playing: ", trackUri);
+           },
+           function (err) {
+             //if the user making the request is non-premium, a 403 FORBIDDEN response code will be returned
+             console.log("Something went wrong!", err);
+           }
+         );
+     
+
+
+         spotifyApi.getMyDevices()
+         .then(function(data) {
+           console.log('Data', data.body);
+         }, function(err) {
+           console.error(err);
+         });
+
+ return (<>
+
+
+ </>
+
+ )
+
+*/

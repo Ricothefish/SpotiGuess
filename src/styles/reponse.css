@@ -8,6 +8,20 @@
     border: solid white 3px;
 }
 
+.title{
+font-size: 2em;
+font-weight: bold;
+margin-bottom: 0;
+text-overflow:ellipsis;
+}
+
+.artist{
+    font-weight: 500;
+    font-size: 1.8em;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
 .cover{
     width: 200px;
 }

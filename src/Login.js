@@ -20,6 +20,7 @@ function Login() {
 
             <a href={AUTH_URL}><button className="btn-login">Se connecter avec Spotify</button></a>
 
+        <footer> Made by <a className='link' target="_blank" href='https://github.com/Ricothefish'>Aymeric GRANIER</a></footer>
         </div>
 
 
