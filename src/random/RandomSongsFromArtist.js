@@ -12,25 +12,16 @@ function RandomSongsFromArtist(accessToken, artistId, randomSongArray, setRandom
 
     spotifyApi.setAccessToken(accessToken)
 
-    const songNumber = 15;
-    //const [randomTracks, setRandomTracks] = useState([])
-    //const [randomTracksIds, setRandomTracksIds] = useState([])
-
-    //const [artistAlbumsIds, setArtistAlbumsIds] = useState([]);
+    const songNumber = 25;
 
 
-    //randomTracks = []
+    var total = 0
 
-
-    var total =0
-
-    spotifyApi.getArtistAlbums(artistId, { limit: 20 , market: "FR"})
+    spotifyApi.getArtistAlbums(artistId, { limit: 20, market: "FR" })
         .then(function (data) {
             const albumsArray = data.body.items
             return albumsArray.map((album) => {
-                console.log(album.name)
                 total = total + album.total_tracks
-                console.log(total)
                 return album.id
             })
         })
@@ -40,22 +31,19 @@ function RandomSongsFromArtist(accessToken, artistId, randomSongArray, setRandom
 
         })
         .then((data) => {
-            var a=[]
-            console.log('data albums',data.body.albums)
-            
+            var a = []
             data.body.albums.map((album) => {
 
 
                 album.tracks.items.map((track) => {
-                    //if (track.explicit) {
-                        a.push(track)
-                        
-                        //randomTracks.push(track)
-                    //}
+
+                    a.push(track)
+
+
                 })
             })
             setRandomSongArray(a)
-            console.log(data)
+          
 
         })
         .catch((err) => {

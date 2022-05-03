@@ -13,14 +13,13 @@ async function RandomSongsFromLiked(accessToken, randomSongArray, setRandomSongA
     spotifyApi.setAccessToken(accessToken)
 
     const songNumber = 20;
-    //const [randomTracks, setRandomTracks] = useState([])
-    //const [totalTracks, setTotalTracks] = useState(0);
+
 
     var randomTracks = []
 
     for (let i = 0; i < songNumber; i++) {
 
-//console.log('sksu')
+
 
         spotifyApi.getMySavedTracks({ limit: 1 })
             .then((data) => {
@@ -34,7 +33,7 @@ async function RandomSongsFromLiked(accessToken, randomSongArray, setRandomSongA
             })
             .then((data) => {
                 setRandomSongArray(arr => [...arr, data.body.items[0].track])
-                //randomTracks.push(data.body.items[0].track)
+               
             })
             
             .catch((err) => {

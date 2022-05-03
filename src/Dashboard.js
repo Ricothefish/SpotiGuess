@@ -50,8 +50,6 @@ function Dashboard({ code }) {
             RandomSongsFromPlaylist(accessToken, selectedPlaylist.selectedPlaylistId, randomSongArray, setRandomSongArray)
         }
 
-
-        //setCurrentSong(randomSongArray[0])
         setGameStart(true)
 
 
@@ -66,7 +64,7 @@ function Dashboard({ code }) {
         }
 
         else {
-            console.log('handleClick')
+
             setCompteur(compteur + 1)
             setShowReponse(false)
             setCurrentSong(filteredRandomSongArray[compteur])
@@ -139,40 +137,13 @@ function Dashboard({ code }) {
 
     }, [filteredRandomSongArray, compteur])
 
-    //const [randomSongArray, setRandomSongArray] = useState()
-    //console.log('selected',selectedArtist.selectedArtistId)
 
 
-
-    //var randomSongArray = RandomSongsFromLiked(accessToken)
-
-
-    // var randomSongArray
-
-
-
-
-
-
-
-
-    console.log('filteredrandomSongArray', filteredRandomSongArray)
-    console.log('compteur', compteur)
-    console.log('currentSong', currentSong)
-    if (selectedArtist) {
-        console.log('selected artist', selectedArtist.selectedArtistId)
-    }
-
-    if (selectedPlaylist) {
-        console.log('selected playlist', selectedPlaylist.selectedPlaylistId)
-    }
-    //console.log('mode',selectedMode)
-
+   
     //partie en cours
     if (currentSong && accessToken) {
-        //setCurrentSong(randomSongArray[compteur])
-        console.log('songReponse', currentSong)
-
+        
+    
         return (
 
 
