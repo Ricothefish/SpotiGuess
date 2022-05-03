@@ -13,56 +13,49 @@ function RandomSongsFromPlaylist(accessToken, playlistId, randomSongArray, setRa
     spotifyApi.setAccessToken(accessToken)
 
     const songNumber = 15;
-    //const [randomTracks, setRandomTracks] = useState([])
-    //const [randomTracksIds, setRandomTracksIds] = useState([])
-
-    //const [artistAlbumsIds, setArtistAlbumsIds] = useState([]);
 
 
-    //randomTracks = []
 
+    var total = 0
+    var tour = 0
 
-    var total =0
-    var tour=0
+    spotifyApi.getPlaylistTracks(playlistId)
+        .then((data) => {
 
-   spotifyApi.getPlaylistTracks(playlistId)
-    .then((data) =>{
-
-        return(data.body.total)
-    })
-    .then((total)=>{
-        console.log('total',total)
-        const limit = 100
-        const nbTour = Math.floor(total / limit) + 1
- 
-        for (let tour = 0; tour < nbTour ; tour++) {
-            console.log('skurt')
-            return spotifyApi.getPlaylistTracks(playlistId,{offset: tour*limit, limit:100})
-            .then((data)=>{
-                var a=[]
-                data.body.items.map((track)=>{
-                    a.push(track.track)
-                })
-        
-                return(a)
-            
+            return (data.body.total)
         })
- 
-    }
-    
-    })
-    .then((liste)=>{
-        setRandomSongArray(liste)
-    })
-    
-    .catch((err) => {
-        console.error(err);
-    })
+        .then((total) => {
+
+            const limit = 100
+            const nbTour = Math.floor(total / limit) + 1
+
+            for (let tour = 0; tour < nbTour; tour++) {
+                return spotifyApi.getPlaylistTracks(playlistId, { offset: tour * limit, limit: 100 })
+                    .then((data) => {
+                        var a = []
+                        data.body.items.map((track) => {
+                            a.push(track.track)
+                        })
+
+                        return (a)
+
+                    })
+
+            }
+
+        })
+        .then((liste) => {
+            setRandomSongArray(liste)
+        })
+
+        .catch((err) => {
+            console.error(err);
+        })
 
 
 
     return (randomSongArray)
-    
+
 
 
 }

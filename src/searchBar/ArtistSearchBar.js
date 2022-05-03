@@ -23,7 +23,6 @@ export default function ArtistSearchBar({ accessToken, selectedArtist, setSelect
         let cancel = false
         spotifyApi.searchArtists(search, { limit: 3 })
             .then((data) => {
-                console.log('searchResult', searchResult)
                 if (cancel) return
                 setSearchResult(
                     data.body.artists.items.map(artist => {
@@ -32,7 +31,6 @@ export default function ArtistSearchBar({ accessToken, selectedArtist, setSelect
                             artistId: artist.id
                         }
                     }))
-                console.log('searchResult', searchResult)
             })
             .catch((e) => {
                 console.log('accessToken erreur', accessToken)
